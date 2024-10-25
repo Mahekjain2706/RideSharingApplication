@@ -1,17 +1,13 @@
 import React from "react";
-import "../Components/HomePage.css";
+// import "../Components/HomePage.css";
+import "../Components/Footer.css";
 
 function Footer() {
   return (
     <div>
       <footer className="footer">
         <div className="logo">
-          {/* <img
-            className="logo"
-            // src="https://raw.githubusercontent.com/Elson0509/uber-homepage-clone/main/imgs/logo.webp"
-            src=""
-            alt=""
-          /> */}
+          {/* You can add a logo here if desired */}
         </div>
         <div>
           <a href="#" className="footer-visit-link">
@@ -112,10 +108,7 @@ function Footer() {
               </a>
             </div>
           </div>
-          <div
-            className="stores"
-            style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}
-          >
+          <div className="stores" style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}>
             <a href="#">
               <img
                 src="https://raw.githubusercontent.com/Elson0509/uber-homepage-clone/1a5cb53774c547ac1b94ed2637084eff885b7638/imgs/googleplay.svg"
@@ -132,7 +125,7 @@ function Footer() {
         </div>
         <div className="footer-privacy">
           <div>
-            <p>© 2021 Uber Technologies Inc.</p>
+            <p>© 2024 Your Company Name.</p>
           </div>
           <div>
             <ul>
