@@ -93,13 +93,15 @@ public class AuthController {
                          encoder.encode(signUpRequest.getPassword()));
 
     Set<String> strRoles = signUpRequest.getRoles();
+
+    System.out.println(strRoles);
+
     Set<Role> roles = new HashSet<>();
 
     if (strRoles == null) {
-      Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-          .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-      roles.add(userRole);
-    } else {
+      strRoles = new HashSet<>();
+      strRoles.add("user");
+    }
       strRoles.forEach(role -> {
         switch (role) {
         case "admin":
@@ -120,7 +122,7 @@ public class AuthController {
           roles.add(userRole);
         }
       });
-    }
+
 
     user.setRoles(roles);
     userRepository.save(user);

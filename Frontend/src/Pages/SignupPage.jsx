@@ -35,12 +35,14 @@ const actions = {
   PASSWORD: "PASSWORD",
   PHONENUMBER: "PHONENUMBER",
   RESET: "RESET",
+  USERNAME: "USERNAME"
 };
 const initialState = {
   name: "",
   email: "",
   password: "",
   phoneNumber: "",
+  username: ""
 };
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -55,6 +57,9 @@ const reducer = (state = initialState, { type, payload }) => {
     }
     case actions.PHONENUMBER: {
       return { ...state, phoneNumber: payload };
+    }
+    case actions.USERNAME: {
+        return { ...state, username: payload }
     }
     case actions.RESET: {
       return initialState;
@@ -73,7 +78,7 @@ export default function SignupPage() {
   // console.log(isLoading,'is loadingstate')
   const [state, dispatch] = useReducer(reducer, initialState);
   const dispatch2 = useDispatch();
-  const { name, email, password, phoneNumber } = state;
+  const { name, email, password, phoneNumber, username } = state;
   // console.log(state, "is state outside function");
   const[isValid,setIsvalid]=useState(`Password is not valid`)
   function validatePassword(password){
@@ -101,7 +106,7 @@ export default function SignupPage() {
     // console.log(e);
     e.preventDefault();
     // console.log(state,'inside function');
-    dispatch2(handleRegister(state))
+    dispatch2(handleRegister({...state, users: ["user"]}))
       .then((res) =>{ toast({
         title: 'User Registered!!',
         status: 'success',
@@ -186,6 +191,16 @@ export default function SignupPage() {
                 }
               />
             </FormControl>
+            <FormControl id="username" isRequired>
+                          <FormLabel>Username</FormLabel>
+                          <Input
+                            type="username"
+                            value={username}
+                            onChange={(e) =>
+                              dispatch({ type: actions.USERNAME, payload: e.target.value })
+                            }
+                          />
+                        </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
